@@ -1,0 +1,16 @@
+<h2>Quiz Gerado pela IA</h2>
+<pre>{{ questions }}</pre>
+<button onclick="sendAnswer(true)">Responder Corretamente</button>
+<button onclick="sendAnswer(false)">Errar</button>
+
+<script>
+function sendAnswer(correct) {
+  fetch("/check_answer", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({correct})
+  }).then(res => res.json())
+   .then(data => alert(data.msg))
+   .then(() => location.reload());
+}
+</script>

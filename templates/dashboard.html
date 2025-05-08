@@ -1,0 +1,14 @@
+<h2>Dashboard - Olá, {{ user.username }}</h2>
+<p>Pontuação: {{ user.points }}</p>
+<h3>Progresso:</h3>
+<ul>
+  <li>Iniciante: {{ '✅' if user.progress.iniciante else '❌' }}</li>
+  <li>Intermediário: {{ '✅' if user.progress.intermediario else '❌' }}</li>
+  <li>Avançado: {{ '✅' if user.progress.avancado else '❌' }}</li>
+</ul>
+
+<h3>Faça upload de seu material</h3>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" accept="application/pdf" required>
+  <button type="submit">Enviar PDF</button>
+</form>
